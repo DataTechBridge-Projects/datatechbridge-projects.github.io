@@ -1,0 +1,91 @@
+<svg viewBox="0 0 800 440" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Arial, sans-serif">
+  <rect width="800" height="440" fill="#0f1117"/>
+
+  <!-- Title -->
+  <text x="400" y="38" text-anchor="middle" fill="#feb2b2" font-size="18" font-weight="bold">tenacity — Retry Logic for Resilient Agents</text>
+
+  <!-- Flow diagram -->
+  <!-- Agent calls tool -->
+  <rect x="30" y="65" width="150" height="50" rx="8" fill="#1e3a5f" stroke="#4299e1" stroke-width="1.5"/>
+  <text x="105" y="87" text-anchor="middle" fill="#90cdf4" font-size="11" font-weight="bold">Agent</text>
+  <text x="105" y="103" text-anchor="middle" fill="#bee3f8" font-size="10">calls LLM / Tool</text>
+
+  <!-- Arrow right -->
+  <line x1="180" y1="90" x2="230" y2="90" stroke="#4a5568" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- @retry decorator box -->
+  <rect x="230" y="55" width="200" height="70" rx="8" fill="#3d1515" stroke="#fc8181" stroke-width="2"/>
+  <text x="330" y="77" text-anchor="middle" fill="#fbd38d" font-size="10" font-family="Consolas, monospace">@retry(</text>
+  <text x="330" y="93" text-anchor="middle" fill="#f6ad55" font-size="10" font-family="Consolas, monospace">  wait=exp_backoff,</text>
+  <text x="330" y="109" text-anchor="middle" fill="#f6ad55" font-size="10" font-family="Consolas, monospace">  stop=stop_after_attempt(3))</text>
+
+  <!-- Arrow right to result -->
+  <line x1="430" y1="90" x2="480" y2="90" stroke="#4a5568" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Success box -->
+  <rect x="480" y="65" width="130" height="50" rx="8" fill="#1a3a1a" stroke="#48bb78" stroke-width="1.5"/>
+  <text x="545" y="87" text-anchor="middle" fill="#68d391" font-size="11" font-weight="bold">✅ Success</text>
+  <text x="545" y="103" text-anchor="middle" fill="#c6f6d5" font-size="10">Result returned</text>
+
+  <!-- Fail path -->
+  <line x1="330" y1="125" x2="330" y2="160" stroke="#fc8181" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="345" y="148" fill="#fc8181" font-size="10">Fails</text>
+
+  <!-- Retry decision box -->
+  <rect x="230" y="160" width="200" height="55" rx="8" fill="#2d1515" stroke="#fc8181" stroke-width="1.5"/>
+  <text x="330" y="182" text-anchor="middle" fill="#feb2b2" font-size="11" font-weight="bold">Retry Decision</text>
+  <text x="330" y="200" text-anchor="middle" fill="#fbd38d" font-size="10">attempts &lt; 3? → wait &amp; retry</text>
+
+  <!-- Retry loop arrow -->
+  <path d="M 230 185 Q 180 185 180 150 Q 180 90 230 90" fill="none" stroke="#ed8936" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrorange)"/>
+  <text x="158" y="148" fill="#ed8936" font-size="10" text-anchor="middle">retry</text>
+
+  <!-- Max retries exceeded -->
+  <line x1="330" y1="215" x2="330" y2="255" stroke="#fc8181" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="345" y="242" fill="#fc8181" font-size="10">Max exceeded</text>
+
+  <rect x="230" y="255" width="200" height="50" rx="8" fill="#3d1515" stroke="#e53e3e" stroke-width="1.5"/>
+  <text x="330" y="277" text-anchor="middle" fill="#fc8181" font-size="11" font-weight="bold">❌ Raise Exception</text>
+  <text x="330" y="293" text-anchor="middle" fill="#fbd38d" font-size="10">RetryError propagated</text>
+
+  <!-- Backoff timing chart -->
+  <rect x="490" y="145" width="290" height="175" rx="10" fill="#1a1015" stroke="#9b2c2c" stroke-width="1.5"/>
+  <text x="635" y="168" text-anchor="middle" fill="#feb2b2" font-size="12" font-weight="bold">Exponential Backoff Timing</text>
+
+  <!-- Bars -->
+  <text x="510" y="200" fill="#718096" font-size="10">Attempt 1</text>
+  <rect x="585" y="188" width="20" height="16" rx="2" fill="#9b2c2c"/>
+  <text x="612" y="200" fill="#fc8181" font-size="10">wait: 1s</text>
+
+  <text x="510" y="225" fill="#718096" font-size="10">Attempt 2</text>
+  <rect x="585" y="213" width="50" height="16" rx="2" fill="#9b2c2c"/>
+  <text x="642" y="225" fill="#fc8181" font-size="10">wait: 2s</text>
+
+  <text x="510" y="250" fill="#718096" font-size="10">Attempt 3</text>
+  <rect x="585" y="238" width="100" height="16" rx="2" fill="#9b2c2c"/>
+  <text x="692" y="250" fill="#fc8181" font-size="10">wait: 4s</text>
+
+  <text x="510" y="275" fill="#718096" font-size="10">Attempt 4</text>
+  <rect x="585" y="263" width="170" height="16" rx="2" fill="#7b341e"/>
+  <text x="762" y="275" fill="#ed8936" font-size="10">wait: 8s</text>
+
+  <text x="635" y="305" text-anchor="middle" fill="#a0aec0" font-size="10">+ optional jitter to avoid thundering herd</text>
+
+  <!-- Code example at bottom -->
+  <rect x="30" y="325" width="440" height="100" rx="8" fill="#0d1117" stroke="#4a5568" stroke-width="1"/>
+  <text x="45" y="343" fill="#718096" font-size="10" font-family="Consolas, monospace">from tenacity import retry, stop_after_attempt, wait_exponential</text>
+  <text x="45" y="360" fill="#ffd700" font-size="10" font-family="Consolas, monospace">@retry(wait=wait_exponential(min=1, max=60),</text>
+  <text x="45" y="376" fill="#ffd700" font-size="10" font-family="Consolas, monospace">       stop=stop_after_attempt(4),</text>
+  <text x="45" y="392" fill="#ffd700" font-size="10" font-family="Consolas, monospace">       retry=retry_if_exception_type(RateLimitError))</text>
+  <text x="45" y="409" fill="#68d391" font-size="10" font-family="Consolas, monospace">async def call_llm(prompt: str) -> str: ...</text>
+
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#4a5568"/>
+    </marker>
+    <marker id="arrorange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#ed8936"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,89 @@
+<svg viewBox="0 0 800 420" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Arial, sans-serif">
+  <rect width="800" height="420" fill="#0f1117"/>
+
+  <!-- Title -->
+  <text x="400" y="38" text-anchor="middle" fill="#90cdf4" font-size="18" font-weight="bold">Pydantic — How It Powers Agentic Workflows</text>
+
+  <!-- Three use cases side by side -->
+
+  <!-- USE CASE 1: Tool Schema -->
+  <rect x="30" y="60" width="225" height="330" rx="10" fill="#1a2a3a" stroke="#4299e1" stroke-width="1.5"/>
+  <rect x="30" y="60" width="225" height="36" rx="10" fill="#2b6cb0"/>
+  <rect x="30" y="84" width="225" height="12" fill="#2b6cb0"/>
+  <text x="143" y="83" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">① Tool / Function Schema</text>
+
+  <rect x="45" y="110" width="195" height="72" rx="6" fill="#0d1b2a"/>
+  <text x="57" y="128" fill="#68d391" font-size="10" font-family="Consolas, monospace">class SearchInput(BaseModel):</text>
+  <text x="57" y="143" fill="#90cdf4" font-size="10" font-family="Consolas, monospace">    query: str</text>
+  <text x="57" y="158" fill="#90cdf4" font-size="10" font-family="Consolas, monospace">    max_results: int = 5</text>
+  <text x="57" y="173" fill="#90cdf4" font-size="10" font-family="Consolas, monospace">    lang: str = "en"</text>
+
+  <text x="143" y="205" text-anchor="middle" fill="#718096" font-size="20">↓</text>
+
+  <rect x="45" y="215" width="195" height="72" rx="6" fill="#0d1b2a"/>
+  <text x="57" y="233" fill="#ffd700" font-size="10" font-family="Consolas, monospace">Auto-generates JSON Schema:</text>
+  <text x="57" y="249" fill="#f6ad55" font-size="10" font-family="Consolas, monospace">{"properties": {</text>
+  <text x="57" y="264" fill="#f6ad55" font-size="10" font-family="Consolas, monospace">  "query": {"type":"str"},</text>
+  <text x="57" y="279" fill="#f6ad55" font-size="10" font-family="Consolas, monospace">  "max_results": {...}</text>
+
+  <text x="143" y="312" text-anchor="middle" fill="#718096" font-size="20">↓</text>
+
+  <text x="143" y="335" text-anchor="middle" fill="#bee3f8" font-size="11">LLM sees schema,</text>
+  <text x="143" y="353" text-anchor="middle" fill="#bee3f8" font-size="11">fills args correctly</text>
+  <text x="143" y="375" text-anchor="middle" fill="#4299e1" font-size="10">Works: LangChain, OpenAI,</text>
+  <text x="143" y="390" text-anchor="middle" fill="#4299e1" font-size="10">Claude, CrewAI, AutoGen</text>
+
+  <!-- USE CASE 2: Structured Output -->
+  <rect x="288" y="60" width="225" height="330" rx="10" fill="#1a3a1a" stroke="#48bb78" stroke-width="1.5"/>
+  <rect x="288" y="60" width="225" height="36" rx="10" fill="#276749"/>
+  <rect x="288" y="84" width="225" height="12" fill="#276749"/>
+  <text x="401" y="83" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">② Structured LLM Output</text>
+
+  <rect x="303" y="110" width="195" height="72" rx="6" fill="#0d1b0d"/>
+  <text x="315" y="128" fill="#68d391" font-size="10" font-family="Consolas, monospace">class Analysis(BaseModel):</text>
+  <text x="315" y="143" fill="#90cdf4" font-size="10" font-family="Consolas, monospace">    sentiment: Literal[</text>
+  <text x="315" y="158" fill="#90cdf4" font-size="10" font-family="Consolas, monospace">      "pos","neg","neu"]</text>
+  <text x="315" y="173" fill="#90cdf4" font-size="10" font-family="Consolas, monospace">    confidence: float</text>
+
+  <text x="401" y="205" text-anchor="middle" fill="#718096" font-size="20">↓</text>
+
+  <rect x="303" y="215" width="195" height="72" rx="6" fill="#0d1b0d"/>
+  <text x="315" y="233" fill="#ffd700" font-size="10" font-family="Consolas, monospace">LLM forced to output:</text>
+  <text x="315" y="249" fill="#f6ad55" font-size="10" font-family="Consolas, monospace">{</text>
+  <text x="315" y="264" fill="#f6ad55" font-size="10" font-family="Consolas, monospace">  "sentiment": "pos",</text>
+  <text x="315" y="279" fill="#f6ad55" font-size="10" font-family="Consolas, monospace">  "confidence": 0.92</text>
+
+  <text x="401" y="312" text-anchor="middle" fill="#718096" font-size="20">↓</text>
+
+  <text x="401" y="335" text-anchor="middle" fill="#c6f6d5" font-size="11">No regex parsing.</text>
+  <text x="401" y="353" text-anchor="middle" fill="#c6f6d5" font-size="11">Always typed, validated.</text>
+  <text x="401" y="375" text-anchor="middle" fill="#48bb78" font-size="10">Works: .with_structured_output()</text>
+  <text x="401" y="390" text-anchor="middle" fill="#48bb78" font-size="10">in LangChain, OpenAI, Claude</text>
+
+  <!-- USE CASE 3: Agent State -->
+  <rect x="546" y="60" width="225" height="330" rx="10" fill="#3a2a1a" stroke="#ed8936" stroke-width="1.5"/>
+  <rect x="546" y="60" width="225" height="36" rx="10" fill="#7b341e"/>
+  <rect x="546" y="84" width="225" height="12" fill="#7b341e"/>
+  <text x="659" y="83" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">③ Agent State Model</text>
+
+  <rect x="561" y="110" width="195" height="72" rx="6" fill="#1a0d00"/>
+  <text x="573" y="128" fill="#68d391" font-size="10" font-family="Consolas, monospace">class AgentState(BaseModel):</text>
+  <text x="573" y="143" fill="#90cdf4" font-size="10" font-family="Consolas, monospace">    messages: list[Message]</text>
+  <text x="573" y="158" fill="#90cdf4" font-size="10" font-family="Consolas, monospace">    step: int = 0</text>
+  <text x="573" y="173" fill="#90cdf4" font-size="10" font-family="Consolas, monospace">    done: bool = False</text>
+
+  <text x="659" y="205" text-anchor="middle" fill="#718096" font-size="20">↓</text>
+
+  <rect x="561" y="215" width="195" height="72" rx="6" fill="#1a0d00"/>
+  <text x="573" y="233" fill="#ffd700" font-size="10" font-family="Consolas, monospace">Validated on every update:</text>
+  <text x="573" y="249" fill="#f6ad55" font-size="10" font-family="Consolas, monospace">state = AgentState(</text>
+  <text x="573" y="264" fill="#f6ad55" font-size="10" font-family="Consolas, monospace">  messages=[...],</text>
+  <text x="573" y="279" fill="#f6ad55" font-size="10" font-family="Consolas, monospace">  step=1)</text>
+
+  <text x="659" y="312" text-anchor="middle" fill="#718096" font-size="20">↓</text>
+
+  <text x="659" y="335" text-anchor="middle" fill="#fbd38d" font-size="11">Type-safe state passing</text>
+  <text x="659" y="353" text-anchor="middle" fill="#fbd38d" font-size="11">between agent nodes.</text>
+  <text x="659" y="375" text-anchor="middle" fill="#ed8936" font-size="10">Native to LangGraph</text>
+  <text x="659" y="390" text-anchor="middle" fill="#ed8936" font-size="10">TypedDict / BaseModel</text>
+</svg>

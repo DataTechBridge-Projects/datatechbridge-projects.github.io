@@ -1,0 +1,65 @@
+<svg viewBox="0 0 800 420" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Arial, sans-serif">
+  <rect width="800" height="420" fill="#0f1117"/>
+
+  <!-- Title -->
+  <text x="400" y="38" text-anchor="middle" fill="#9ae6b4" font-size="18" font-weight="bold">httpx — Async HTTP for Agentic Tool Calls</text>
+
+  <!-- Left: Sync vs Async comparison -->
+  <!-- Sync (old way) -->
+  <rect x="30" y="60" width="340" height="160" rx="10" fill="#2d1515" stroke="#fc8181" stroke-width="1.5"/>
+  <rect x="30" y="60" width="340" height="34" rx="10" fill="#9b2c2c"/>
+  <rect x="30" y="82" width="340" height="12" fill="#9b2c2c"/>
+  <text x="200" y="81" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">❌ Sequential (requests) — Slow</text>
+
+  <rect x="45" y="104" width="310" height="104" rx="6" fill="#1a0a0a"/>
+  <text x="57" y="122" fill="#fc8181" font-size="10" font-family="Consolas, monospace">result1 = requests.get(api1)  # 1s</text>
+  <text x="57" y="139" fill="#fc8181" font-size="10" font-family="Consolas, monospace">result2 = requests.get(api2)  # 1s</text>
+  <text x="57" y="156" fill="#fc8181" font-size="10" font-family="Consolas, monospace">result3 = requests.get(api3)  # 1s</text>
+  <text x="57" y="176" fill="#fbd38d" font-size="10" font-family="Consolas, monospace"># Total: 3 seconds — blocking!</text>
+  <text x="57" y="196" fill="#718096" font-size="10" font-family="Consolas, monospace"># Agent waits for each call</text>
+
+  <!-- Async (httpx way) -->
+  <rect x="430" y="60" width="340" height="160" rx="10" fill="#1a3a1a" stroke="#48bb78" stroke-width="1.5"/>
+  <rect x="430" y="60" width="340" height="34" rx="10" fill="#276749"/>
+  <rect x="430" y="82" width="340" height="12" fill="#276749"/>
+  <text x="600" y="81" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">✅ Concurrent (httpx) — Fast</text>
+
+  <rect x="445" y="104" width="310" height="104" rx="6" fill="#0a1a0a"/>
+  <text x="457" y="122" fill="#68d391" font-size="10" font-family="Consolas, monospace">async with httpx.AsyncClient() as c:</text>
+  <text x="457" y="139" fill="#90cdf4" font-size="10" font-family="Consolas, monospace">  r1, r2, r3 = await asyncio.gather(</text>
+  <text x="457" y="156" fill="#90cdf4" font-size="10" font-family="Consolas, monospace">    c.get(api1), c.get(api2),</text>
+  <text x="457" y="173" fill="#90cdf4" font-size="10" font-family="Consolas, monospace">    c.get(api3))</text>
+  <text x="457" y="193" fill="#fbd38d" font-size="10" font-family="Consolas, monospace"># Total: ~1 second — concurrent!</text>
+
+  <!-- Timeline visualization -->
+  <text x="400" y="250" text-anchor="middle" fill="#718096" font-size="13" font-weight="bold">Execution Timeline</text>
+
+  <!-- Sequential timeline -->
+  <text x="30" y="275" fill="#fc8181" font-size="11">Sequential:</text>
+  <rect x="120" y="262" width="80" height="18" rx="3" fill="#9b2c2c"/>
+  <text x="160" y="275" text-anchor="middle" fill="#fff" font-size="9">API 1</text>
+  <rect x="210" y="262" width="80" height="18" rx="3" fill="#9b2c2c"/>
+  <text x="250" y="275" text-anchor="middle" fill="#fff" font-size="9">API 2</text>
+  <rect x="300" y="262" width="80" height="18" rx="3" fill="#9b2c2c"/>
+  <text x="340" y="275" text-anchor="middle" fill="#fff" font-size="9">API 3</text>
+  <text x="400" y="275" fill="#fc8181" font-size="11">⟵ 3s</text>
+
+  <!-- Concurrent timeline -->
+  <text x="30" y="310" fill="#48bb78" font-size="11">Concurrent:</text>
+  <rect x="120" y="297" width="80" height="18" rx="3" fill="#276749"/>
+  <text x="160" y="310" text-anchor="middle" fill="#fff" font-size="9">API 1</text>
+  <rect x="120" y="317" width="80" height="18" rx="3" fill="#276749"/>
+  <text x="160" y="330" text-anchor="middle" fill="#fff" font-size="9">API 2</text>
+  <rect x="120" y="337" width="80" height="18" rx="3" fill="#276749"/>
+  <text x="160" y="350" text-anchor="middle" fill="#fff" font-size="9">API 3</text>
+  <text x="220" y="325" fill="#48bb78" font-size="11">⟵ ~1s</text>
+
+  <!-- Key features box -->
+  <rect x="450" y="245" width="320" height="145" rx="10" fill="#1a2a1a" stroke="#48bb78" stroke-width="1"/>
+  <text x="610" y="268" text-anchor="middle" fill="#9ae6b4" font-size="12" font-weight="bold">Why httpx in Agentic Systems</text>
+  <text x="467" y="292" fill="#c6f6d5" font-size="11">✦  async/await native — works with asyncio</text>
+  <text x="467" y="312" fill="#c6f6d5" font-size="11">✦  Same API for sync &amp; async code</text>
+  <text x="467" y="332" fill="#c6f6d5" font-size="11">✦  HTTP/2 support for faster API calls</text>
+  <text x="467" y="352" fill="#c6f6d5" font-size="11">✦  Timeout, retry, auth built-in</text>
+  <text x="467" y="372" fill="#c6f6d5" font-size="11">✦  Used internally by OpenAI &amp; Anthropic SDK</text>
+</svg>
