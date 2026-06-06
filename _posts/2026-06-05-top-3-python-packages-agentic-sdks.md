@@ -6,7 +6,7 @@ This post breaks down what each one does, why it matters, and how to use it effe
 
 ---
 
-![Agentic Stack Overview](./images/agentic-stack-overview.svg)
+![Agentic Stack Overview](/images/agentic-stack-overview.svg)
 
 ---
 
@@ -24,7 +24,7 @@ This post breaks down what each one does, why it matters, and how to use it effe
 
 **Why it matters:** LLMs communicate via text. Pydantic converts that unstructured text into typed, validated Python objects — and converts your Python objects into the JSON schemas LLMs need to call your tools correctly.
 
-![Pydantic Flow](./images/pydantic-flow.svg)
+![Pydantic Flow](/images/pydantic-flow.svg)
 
 ### Use Case 1: Tool / Function Schemas
 
@@ -157,7 +157,7 @@ class AgentConfig(BaseModel):
 
 **Why it matters:** Agentic SDKs are async at the core. `asyncio` is the Python stdlib that makes concurrent agent execution possible — running multiple tool calls simultaneously, managing background tasks, and keeping the event loop unblocked. Every SDK is built on top of it.
 
-![asyncio Flow](./images/asyncio-flow.svg)
+![asyncio Flow](/images/asyncio-flow.svg)
 
 ### The Event Loop — What Actually Runs Your Agent
 
@@ -317,7 +317,7 @@ result = await app.ainvoke({"messages": ["Research AI trends"], "results": {}})
 
 **Why it matters:** LLM APIs fail. Rate limits happen. Network blips occur. Without retry logic, your agent crashes on a transient error. With tenacity, one decorator handles all of it.
 
-![tenacity Retry Flow](./images/tenacity-retry.svg)
+![tenacity Retry Flow](/images/tenacity-retry.svg)
 
 ### The Problem Without Retry Logic
 
