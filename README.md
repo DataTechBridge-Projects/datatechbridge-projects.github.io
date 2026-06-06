@@ -117,6 +117,7 @@ _posts/
 
 1. **Prompt Engineering** (2026-06-05) - Principles, techniques, and applications
 2. **Prompt Injection** (2026-06-06) - Security threats and defenses
+3. **LLM Benchmarking** (2026-06-07) - Measuring AI model performance with standardized metrics and leaderboards
 
 ## Customization
 

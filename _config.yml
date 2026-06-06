@@ -2,8 +2,8 @@ title: Daily Tech Insights
 description: Exploring prompt engineering, security, and AI topics
 baseurl: ""
 url: "https://yourusername.github.io"
-twitter_username: yourhandle
-github_username: yourhandle
+twitter_username: myhandle
+github_username: myhandle
 
 theme: minima
 plugins:
