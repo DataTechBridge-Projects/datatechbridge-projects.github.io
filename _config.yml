@@ -19,6 +19,9 @@ kramdown:
   input: GFM
   hard_wrap: false
 
+# Future posts
+future: true
+
 # Collections
 collections:
   posts:
