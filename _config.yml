@@ -1,0 +1,26 @@
+title: Daily Tech Insights
+description: Exploring prompt engineering, security, and AI topics
+baseurl: ""
+url: "https://yourusername.github.io"
+twitter_username: yourhandle
+github_username: yourhandle
+
+theme: minima
+plugins:
+  - jekyll-feed
+
+# Pagination
+paginate: 10
+paginate_path: "/page:num/"
+
+# Markdown
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /:year/:month/:day/:slug/
