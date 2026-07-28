@@ -8,6 +8,7 @@ github_username: myhandle
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-paginate
 
 # Pagination
 paginate: 10

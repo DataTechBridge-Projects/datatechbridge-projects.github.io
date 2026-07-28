@@ -57,7 +57,7 @@ layout: default
     <ul class="tutorials-list">
       {%- for tutorial in site.data.tutorials -%}
       <li>
-        <a href="{{ tutorial.url }}">{{ tutorial.title }}</a>
+        <a href="{{ tutorial.url }}" target="_blank" rel="noopener noreferrer">{{ tutorial.title }}</a>
       </li>
       {%- endfor -%}
     </ul>
