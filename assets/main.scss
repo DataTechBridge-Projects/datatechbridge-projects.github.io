@@ -1,0 +1,53 @@
+---
+---
+
+@import "minima";
+
+.home-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-unit;
+  align-items: flex-start;
+}
+
+.home-layout .home {
+  flex: 3 1 0;
+  min-width: 0;
+}
+
+.tutorials-sidebar {
+  flex: 1 1 220px;
+  max-width: 280px;
+  padding: $spacing-unit / 2;
+  border: 1px solid $grey-color-light;
+  border-radius: 6px;
+}
+
+.tutorials-heading {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+.tutorials-list {
+  list-style: none;
+  margin-left: 0;
+
+  li {
+    margin-bottom: $spacing-unit / 3;
+  }
+
+  a {
+    word-break: break-word;
+  }
+}
+
+@media screen and (max-width: $on-palm) {
+  .home-layout {
+    flex-direction: column;
+  }
+
+  .tutorials-sidebar {
+    max-width: none;
+    order: -1;
+  }
+}
