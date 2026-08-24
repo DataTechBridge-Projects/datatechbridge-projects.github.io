@@ -2,6 +2,6 @@
 layout: home
 ---
 
-Welcome to my daily insights blog! Here I explore topics in Data, System Desgin, AI, solution engineering, security, and technology.
+Welcome! This site is a growing collection of tutorials for building the foundation to excel as a senior professional or architect — system design, data architecture, AI/agentic engineering, and solutions engineering. Concepts I've learned or worked with, organized so you (or future me) can come back anytime to learn or brush up. Browse the tutorials sidebar to dive in — more are added regularly.
 
-Check back daily for new posts on different topics.
+I also post shorter daily insights below on AI: prompt engineering, agentic SDKs, AI security, and LLM benchmarking.
